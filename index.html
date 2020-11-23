@@ -6,19 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
 
-    <title>Document</title>
+    <title>COVID Travel</title>
 </head>
 
 <body>
-    <div class="container is-fluid">
+    <!-- This is the Header section -->
+    <div class="container is-fluid" id="header">
         <div class="notification is-primary">
             This container is <strong>fluid</strong>: it will have a 32px gap on either side, on any viewport size.
         </div>
     </div>
-    <form action="submit" class="box">
+    <!-- Form for location search -->
+    <form action="submit" class="box" id="searchForm">
         <div class="field">
             <p class="control has-icons-left has-icons-right">
-                <input class="input" type="email" placeholder="City">
+                <input class="input" type="email" placeholder="City" id="citySearch">
                 <span class="icon is-small is-left">
                 <i class="fas fa-envelope"></i>
             </span>
@@ -29,34 +31,36 @@
         </div>
         <div class="field ">
             <p class="control has-icons-left">
-                <input class="input" type="password" placeholder="State">
+                <input class="input" type="password" placeholder="State" id="stateSearch">
                 <span class="icon is-small is-left">
                 <i class="fas fa-lock"></i>
             </span>
             </p>
             <div class="field">
                 <p class="control">
-                    <button class="button is-success">
+                    <button class="button is-success" id="submit">
                      Submit
                     </button>
                 </p>
             </div>
     </form>
-    <div class="columns">
+    <!-- Recent searches -->
+    <div class="columns" id="historyColumn">
         <div class="column is-narrow">
-            <div class="box" style="width: 200px;">
+            <div class="box" style="width: 200px;" id="historyBox">
                 <p class="title is-5">Recent Searches</p>
-                <button class="button is-fullwidth">Normal</button>
-                <button class="button is-fullwidth">Normal</button>
-                <button class="button is-fullwidth">Normal</button>
-                <button class="button is-fullwidth">Normal</button>
-                <button class="button is-fullwidth">Normal</button>
+                <button class="button is-fullwidth" id="historyButton1">Normal</button>
+                <button class="button is-fullwidth" id="historyButton2">Normal</button>
+                <button class="button is-fullwidth" id="historyButton3">Normal</button>
+                <button class="button is-fullwidth" id="historyButton4">Normal</button>
+                <button class="button is-fullwidth" id="historyButton5">Normal</button>
             </div>
         </div>
-        <div class="column">
-            <div class="box">
+        <!-- parent column -->
+        <div class="column" id="currentColumn">
+            <div class="box" id="currentBox">
                 <p class="title is-5">Current Trip</p>
-
+                <!-- child column for map and trip info -->
                 <div class="columns">
                     <div class="column" id="selected-trip">
                         First column
@@ -65,6 +69,7 @@
                         second column
                     </div>
                 </div>
+                <!-- COVID data will go here -->
                 <div id="covid-data">
                     Covid Data
                 </div>
