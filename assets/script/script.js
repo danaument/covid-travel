@@ -15,12 +15,13 @@ var stateDatabank = {
     Delaware: {abbr: "DE", lat: "38.99", lon: "-75.51"},
     DC: {abbr: "DC", lat: "38.91", lon: "-77.01"},
     // : {abbr: "", lat: "", lon: ""},
+    // https://en.wikipedia.org/wiki/List_of_geographic_centers_of_the_United_States#Updated_list_of_geographic_centers
     
     Texas: {abbr: "TX", lat: "31.47", lon: "-99.33"}
 }
 
 var currentTrip = {
-    location: "New York", 
+    location: "New-York", 
     startDate: "20200202",
     endDate: "20200205"
 };
@@ -60,6 +61,9 @@ var setHistory = function() {
 //render selected trip 
 var renderTrip = function (currentTrip) {
     //location map
+    var lon = stateDatabank[currentTrip.location].lon
+    var lat = stateDatabank[currentTrip.location].lat
+    
     $("#map").html(`
     
 <div id='map' style='width: 200px; height: 200px;'></div>
@@ -75,7 +79,6 @@ var map = new mapboxgl.Map({
     `)
     //first column
 
-    var date = currentTrip.endDate
     var styledLocation = currentTrip.location.toUpperCase()
     var styledStart = moment(currentTrip.startDate, "YYYYMMDD").format("dddd, MMMM Do, YYYY")
     var styledEnd = moment(currentTrip.endDate, "YYYYMMDD").format("dddd, MMMM Do, YYYY")
@@ -98,7 +101,7 @@ var map = new mapboxgl.Map({
         var date = currentTrip.endDate
         //api call for covid data
         $.ajax({
-            url: `https://api.covidtracking.com/v1/states/${currentTrip.location}/${date}.json`,
+            url: `https://api.covidtracking.com/v1/states/${stateDatabank[currentTrip.location].abbr}/${date}.json`,
             method: "GET"
         }).then(function(response) {
             console.log(response);
@@ -192,7 +195,7 @@ $(document).ready(function() {
 
     //just testing
     currentTrip = {
-        location: "ny", 
+        location: "Alabama", 
         startDate: "20200802",
         endDate: "20200805"
     };
@@ -206,8 +209,20 @@ $(document).ready(function() {
         var stateInput = $('#stateSearch').val();
         var startDateInput = $('#startDateInput').val();
         var endDateInput = $('#endDateInput').val();
-        alert(stateInput, startDateInput, endDateInput);
         
+        //format start and end dates from MM/DD/YYYY to YYYYMMDD
+
+        //store to currentTrip
+        //setcurrenttrip
+        //pushcurrenttrip to history object
+        //store history object
+
+        //swap any spaces " " with hyphens in state names
+
+
+        console.log(startDateInput);
+        console.log(endDateInput);
+        alert(stateInput, startDateInput, endDateInput);
 
     })
 
