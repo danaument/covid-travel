@@ -7,13 +7,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="./assets/style/style.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
-    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.min.js"></script>
-    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.css" type="text/css" />
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
-
     <title>COVID Travel</title>
 </head>
 
@@ -27,7 +22,7 @@
     <!-- Form for location search -->
     <form action="submit" class="box" id="searchForm">
         <div class="field ">
-            <p class="control has-icons-left">
+          <p class="control has-icons-left">
                 <input class="input" type="text" placeholder="State" id="stateSearch">
                 <span class="icon is-small is-left">
                 <i class="fas fa-lock"></i>
@@ -37,7 +32,7 @@
             <div class="field">
                 <label class="label">Start</label>
                 <div class="control">
-                    <p>Date: <input type="text" class="datepicker"></p>
+                    <p>Date: <input type="text" class="datepicker" id="startDateInput"></p>
 
                 </div>
             </div>
@@ -45,7 +40,7 @@
             <div class="field">
                 <label class="label">End</label>
                 <div class="control">
-                    <p>Date: <input type="text" class="datepicker"></p>
+                    <p>Date: <input type="text" class="datepicker" id="endDateInput"></p>
 
                 </div>
             </div>
@@ -79,46 +74,9 @@
                         First column
                     </div>
                     <!-- map goes here -->
-                    <div class="column" id="map">
-                        <style>
-                            .geocoder {
-                                position: absolute;
-                                z-index: 1;
-                                width: 100%;
-                                left: 50%;
-                                margin-left: -25%;
-                                top: 10px;
-                            }
-                            
-                            .mapboxgl-ctrl-geocoder {
-                                min-width: 10%;
-                            }
-                            
-                            #map {
-                                margin-top: 75px;
-                                height: 50vh;
-                            }
-                        </style>
-                        <div id="map"></div>
-                        <div id="geocoder" class="geocoder"></div>
-
-                        <script>
-                            // map
-                            mapboxgl.accessToken = 'pk.eyJ1IjoianVzdGluYnVzaDI0IiwiYSI6ImNraHZlZWRycDEyb2oycm1hYW1tcXhuejkifQ.gtW8Npsk-YeI0cLanLcpRw';
-                            var map = new mapboxgl.Map({
-                                container: 'map',
-                                style: 'mapbox://styles/mapbox/streets-v11',
-                                center: [-79.4512, 43.6568],
-                                zoom: 13
-                            });
-                            // search bar
-                            var geocoder = new MapboxGeocoder({
-                                accessToken: mapboxgl.accessToken,
-                                mapboxgl: mapboxgl
-                            });
-
-                            document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
-                        </script>
+                      <div class="column" id="map">
+                        second column
+                    </div>
                     </div>
                 </div>
                 <!-- COVID data will go here -->
@@ -127,12 +85,12 @@
                 </div>
             </div>
         </div>
-        <!-- <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script> -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-        <script src="assets/script/script.js"></script>
-        <!-- Promise polyfill script required to use Mapbox GL Geocoder in IE 11 -->
-        <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="assets/script/script.js"></script>
+
 </body>
 
 </html>
