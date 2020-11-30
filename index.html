@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
     <link rel="stylesheet" href="./assets/style/style.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
     <title>COVID Travel</title>
@@ -17,7 +18,9 @@
     <!-- This is the Header section -->
     <div class="container is-fluid" id="header">
         <div class="notificagtion is-primary">
-            This container is <strong>fluid</strong>: it will have a 32px gap on either side, on any viewport size.
+            <h1>
+                Covid Data Trip Planner
+            </h1>
         </div>
     </div>
     <!-- Form for location search -->
@@ -29,8 +32,8 @@
                 <i class="fas fa-lock"></i>
             </span>
             </p>
-
-            <div class="field">
+            <div class="columns is-vcentered">
+            <div class="field column">
                 <label class="label">Start</label>
                 <div class="control">
                     <p>Date: <input type="text" class="datepicker" id="startDateInput"></p>
@@ -38,31 +41,32 @@
                 </div>
             </div>
 
-            <div class="field">
+            <div class="field column">
                 <label class="label">End</label>
                 <div class="control">
                     <p>Date: <input type="text" class="datepicker" id="endDateInput"></p>
 
                 </div>
             </div>
-            <div class="field">
+            <div class="field column">
                 <p class="control">
                     <button class="button is-success" id="submit">
                      Submit
                     </button>
                 </p>
             </div>
+        </div>
     </form>
     <!-- Recent searches -->
     <div class="columns" id="historyColumn">
         <div class="column is-narrow">
             <div class="box" style="width: 200px;" id="historyBox">
                 <p class="title is-5">Recent Searches</p>
-                <button class="button is-fullwidth" id="historyButton1">Normal</button>
+                <!-- <button class="button is-fullwidth" id="historyButton1">Normal</button>
                 <button class="button is-fullwidth" id="historyButton2">Normal</button>
                 <button class="button is-fullwidth" id="historyButton3">Normal</button>
                 <button class="button is-fullwidth" id="historyButton4">Normal</button>
-                <button class="button is-fullwidth" id="historyButton5">Normal</button>
+                <button class="button is-fullwidth" id="historyButton5">Normal</button> -->
             </div>
         </div>
         <!-- parent column -->
