@@ -1,13 +1,9 @@
-element.style {
-}
-
-
+element.style {}
 
 .button.is-success {
     background-color: #0bf95e;
     border-color: #f14668;
     color: #f14668;
-    
 }
 
 .button {
@@ -25,7 +21,6 @@ element.style {
     white-space: nowrap;
 }
 
-
 .title {
     color: #2160c4;
     font-size: 2rem;
@@ -33,34 +28,27 @@ element.style {
     line-height: 1.125;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-*, ::after, ::before {
+*,
+ ::after,
+ ::before {
     box-sizing: inherit;
 }
-*, ::after, ::before {
+
+*,
+ ::after,
+ ::before {
     box-sizing: inherit;
 }
-*, ::after, ::before {
+
+*,
+ ::after,
+ ::before {
     box-sizing: inherit;
 }
-user agent stylesheet
-div {
+
+user agent stylesheet div {
     display: block;
 }
-
-
 
 .box {
     background-color: rgb(17, 228, 193);
@@ -70,6 +58,7 @@ div {
     display: block;
     padding: 1.25rem;
 }
+
 .box {
     background-color: rgb(22, 233, 198);
     border-radius: 6px;
@@ -78,24 +67,39 @@ div {
     display: block;
     padding: 1.25rem;
 }
-body, button, input, optgroup, select, textarea {
+
+body,
+button,
+input,
+optgroup,
+select,
+textarea {
     font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
 body {
     color: rgb(250, 46, 10);
     font-size: 1em;
     font-weight: 400;
     line-height: 1.5;
 }
+
 body {
     color: rgb(253, 10, 10);
     font-size: 1em;
     font-weight: 400;
     line-height: 1.5;
 }
-body, button, input, optgroup, select, textarea {
+
+body,
+button,
+input,
+optgroup,
+select,
+textarea {
     font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
 html {
     background-color: rgb(41, 177, 240);
     font-size: 16px;
@@ -105,6 +109,7 @@ html {
     text-rendering: optimizelegibility;
     text-size-adjust: 100%;
 }
+
 html {
     background-color: rgb(243, 9, 9);
     font-size: 16px;
@@ -114,27 +119,44 @@ html {
     text-rendering: optimizelegibility;
     text-size-adjust: 100%;
 }
-*, ::after, ::before {
-    box-sizing: inherit;
-}
-*, ::after, ::before {
-    box-sizing: inherit;
-}
-*, ::after, ::before {
-    box-sizing: inherit;
-}
-*, ::after, ::before {
+
+*,
+ ::after,
+ ::before {
     box-sizing: inherit;
 }
 
-*, ::after, ::before {
-    box-sizing: inherit;
-}
-*, ::after, ::before {
+*,
+ ::after,
+ ::before {
     box-sizing: inherit;
 }
 
-root { 
+*,
+ ::after,
+ ::before {
+    box-sizing: inherit;
+}
+
+*,
+ ::after,
+ ::before {
+    box-sizing: inherit;
+}
+
+*,
+ ::after,
+ ::before {
+    box-sizing: inherit;
+}
+
+*,
+ ::after,
+ ::before {
+    box-sizing: inherit;
+}
+
+root {
     --pewter-blue: rgb(20, 202, 235);
     --melon: rgb(218, 64, 13);
     --new-york-pink: rgb(140, 235, 16);

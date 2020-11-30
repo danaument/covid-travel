@@ -3,36 +3,74 @@ var state = "ca";
 var date = "20201125";
 var lat = "38.99";
 var lon = "-75.51";
+var stateInput;
 
 var stateDatabank = {
-    Alabama: {abbr: "AL", lat: "32.77", lon: "-86.83"}, 
-    Alaska: {abbr: "AK", lat: "64.07", lon: "-152.28"},
-    Arizona: {abbr: "AZ", lat: "34.27", lon: "-111.66"},
-    Arkansas: {abbr: "AR", lat: "34.89", lon: "-92.44"},
-    California: {abbr: "CA", lat: "37.18", lon: "-119.47"},
-    Colorado: {abbr: "CO", lat: "38.99", lon: "-105.55"},
-    Connencticut: {abbr: "CT", lat: "41.62", lon: "-105.55"},
-    Delaware: {abbr: "DE", lat: "38.99", lon: "-75.51"},
-    DC: {abbr: "DC", lat: "38.91", lon: "-77.01"},
+    Alabama: { abbr: "AL", lat: "32.77", lon: "-86.83" },
+    Alaska: { abbr: "AK", lat: "64.07", lon: "-152.28" },
+    Arizona: { abbr: "AZ", lat: "34.27", lon: "-111.66" },
+    Arkansas: { abbr: "AR", lat: "34.89", lon: "-92.44" },
+    California: { abbr: "CA", lat: "37.18", lon: "-119.47" },
+    Colorado: { abbr: "CO", lat: "38.99", lon: "-105.55" },
+    Connencticut: { abbr: "CT", lat: "41.62", lon: "-105.55" },
+    Delaware: { abbr: "DE", lat: "38.99", lon: "-75.51" },
+    DC: { abbr: "DC", lat: "38.91", lon: "-77.01" },
+    Florida: { abbr: "FL", lat: "28.68", lon: "-82.46" },
+    Georgia: { abbr: "GA", lat: "32.66", lon: "-83.43" },
+    Hawaii: { abbr: "HI", lat: "20.29", lon: "-156.37" },
+    Idaho: { abbr: "ID", lat: "44.35", lon: "-114.61" },
+    Illinois: { abbr: "IL", lat: "40.04", lon: "-89.19" },
+    Indiana: { abbr: "IN", lat: "39.89", lon: "-86.28" },
+    Iowa: { abbr: "IA", lat: "42.07", lon: "-93.49" },
+    Kansas: { abbr: "KS", lat: "38.49", lon: "-98.38" },
+    Kentucky: { abbr: "KY", lat: "37.53", lon: "-85.30" },
+    Louisiana: { abbr: "LA", lat: "31.06", lon: "-91.99" },
+    Maine: { abbr: "ME", lat: "45.36", lon: "-69.24" },
+    Maryland: { abbr: "MD", lat: "39.05", lon: "-76.79" },
+    Massachusetts: { abbr: "MA", lat: "42.25", lon: "-71.80" },
+    Michigan: { abbr: "MI", lat: "44.34", lon: "-85.41" },
+    Minnesota: { abbr: "MN", lat: "46.28", lon: "-94.30" },
+    Mississippi: { abbr: "MS", lat: "32.73", lon: "-89.66" },
+    Missouri: { abbr: "MO", lat: "38.35", lon: "-92.45" },
+    Montana: { abbr: "MT", lat: "47.05", lon: "-109.63" },
+    Nebraska: { abbr: "NE", lat: "41.53", lon: "-99.79" },
+    Nevada: { abbr: "NV", lat: "39.32", lon: "-116.63" },
+    New_Hampshire: { abbr: "NH", lat: "43.68", lon: "-71.58" },
+    New_York: { abbr: "NY", lat: "42.95", lon: "-75.52" },
+    North_Carolina: { abbr: "NC", lat: "35.55", lon: "-79.38" },
+    North_Dakota: { abbr: "ND", lat: "47.45", lon: "-100.46" },
+    Ohio: { abbr: "OH", lat: "40.28", lon: "-82.79" },
+    Oklahoma: { abbr: "OK", lat: "35.58", lon: "-97.49" },
+    Oregon: { abbr: "OR", lat: "43.93", lon: "-120.55" },
+    Pennsylvania: { abbr: "PA", lat: "40.87", lon: "-77.79" },
+    Rhode_Island: { abbr: "RI", lat: "41.67", lon: "-71.55" },
+    South_Carolina: { abbr: "SC", lat: "33.91", lon: "-80.89" },
+    South_Dakota: { abbr: "SD", lat: "44.44", lon: "-100.22" },
+    Tennessee: { abbr: "TN", lat: "35.85", lon: "-86.35" },
+    Texas: { abbr: "TX", lat: "31.47", lon: "-99.33" },
+    Utah: { abbr: "UT", lat: "39.30", lon: "-111.67" },
+    Vermont: { abbr: "VT", lat: "44.06", lon: "-72.66" },
+    Virginia: { abbr: "VA", lat: "37.52", lon: "-78.85" },
+    Washington: { abbr: "WA", lat: "47.38", lon: "-120.44" },
+    West_Virginia: { abbr: "WV", lat: "38.64", lon: "-80.62" },
+    Wisconsin: { abbr: "WI", lat: "44.62", lon: "-89.99" },
+    Wyoming: { abbr: "WY", lat: "42.99", lon: "-107.55" },
     // : {abbr: "", lat: "", lon: ""},
     // https://en.wikipedia.org/wiki/List_of_geographic_centers_of_the_United_States#Updated_list_of_geographic_centers
-    
-    Texas: {abbr: "TX", lat: "31.47", lon: "-99.33"}
+
 }
 
 var currentTrip = {
-    location: "New-York", 
+    location: "New-York",
     startDate: "20200202",
     endDate: "20200205"
 };
 
-var searchHistory = [
-    {
-        location: "Texas",
-        startDate: "20201123",
-        endDate: "20201125"
-    }
-];
+var searchHistory = [{
+    location: "Texas",
+    startDate: "20201123",
+    endDate: "20201125"
+}];
 
 var getCurrentTrip = function() {
     if (JSON.parse(localStorage.getItem("currentTrip"))) {
@@ -41,7 +79,7 @@ var getCurrentTrip = function() {
         console.log("local storage current city was empty")
     }
 };
-
+//set current trip
 var storeCurrentTrip = function() {
     localStorage.setItem("currentTrip", JSON.stringify(currentTrip));
 };
@@ -59,11 +97,11 @@ var setHistory = function() {
 };
 
 //render selected trip 
-var renderTrip = function (currentTrip) {
+var renderTrip = function(currentTrip) {
     //location map
     var lon = stateDatabank[currentTrip.location].lon
     var lat = stateDatabank[currentTrip.location].lat
-    
+
     $("#map").html(`
     
 <div id='map' style='width: 200px; height: 200px;'></div>
@@ -77,7 +115,7 @@ var map = new mapboxgl.Map({
 });
 </script>
     `)
-    //first column
+        //first column
 
     var styledLocation = currentTrip.location.toUpperCase()
     var styledStart = moment(currentTrip.startDate, "YYYYMMDD").format("dddd, MMMM Do, YYYY")
@@ -99,7 +137,7 @@ var map = new mapboxgl.Map({
     `)
     if (isTripOld) {
         var date = currentTrip.endDate
-        //api call for covid data
+            //api call for covid data
         $.ajax({
             url: `https://api.covidtracking.com/v1/states/${stateDatabank[currentTrip.location].abbr}/${date}.json`,
             method: "GET"
@@ -170,9 +208,9 @@ var map = new mapboxgl.Map({
             alert("Your ajax call failed.")
         })
     }
-    
+
     //api call for map
-    
+
 };
 
 var renderButtons = function() {
@@ -186,48 +224,56 @@ var renderButtons = function() {
 
 $(document).ready(function() {
     //datepicker
-    $( function() {
-        $( ".datepicker" ).datepicker();
-    } );
+    $(function() {
+        $(".datepicker").datepicker();
+    });
 
     //load saved data
     getCurrentTrip();
 
     //just testing
-    currentTrip = {
-        location: "Alabama", 
+    var currentTrip = {
+        location: "Texas",
         startDate: "20200802",
-        endDate: "20200805"
-    };
+        endDate: "20200805",
+
+    }
     getHistory();
 
     //build current page
     renderTrip(currentTrip);
 
     $('#searchForm').submit(function(event) {
-        event.preventDefault();
-        var stateInput = $('#stateSearch').val();
-        var startDateInput = $('#startDateInput').val();
-        var endDateInput = $('#endDateInput').val();
-        
-        //format start and end dates from MM/DD/YYYY to YYYYMMDD
+            event.preventDefault();
+            //swap any spaces " " with underscore in state names
+            //format start and end dates from MM/DD/YYYY to YYYYMMDD
+            var startDateInput = $('#startDateInput').val().replace(/(\d\d)\/(\d\d)\/(\d{4})/, "$3$1$2");
+            var endDateInput = $('#endDateInput').val().replace(/(\d\d)\/(\d\d)\/(\d{4})/, "$3$1$2");;
+            var stateInput = $('#stateSearch').val().replace(' ', '_');
+            var historyButton = document.createElement("button");
+            historyButton.innerHTML = stateInput
+            document.getElementById('historyBox').appendChild(historyButton)
+        })
+        // stringify and parse current trip input
+    let currentTripObject = JSON.stringify(currentTrip);
 
-        //store to currentTrip
-        //setcurrenttrip
-        //pushcurrenttrip to history object
-        //store history object
+    localStorage.setItem("currentTripObject", currentTripObject);
 
-        //swap any spaces " " with hyphens in state names
+    let currentTripParse = JSON.parse(localStorage.getItem("currentTripObject"));
 
+    console.log(currentTripParse)
 
-        console.log(startDateInput);
-        console.log(endDateInput);
-        alert(stateInput, startDateInput, endDateInput);
-
-    })
+    //store to currentTrip
+    //setcurrenttrip
+    //pushcurrenttrip to history object
+    //store history object
 
 
-//eventhandler for form submit
+    // eventhandler for form submit
+
+    // form submit button needs to insert data current trip to call for map and covid apis,
+    // create a button in recent searches
+    // button needs to input previous search criteria into current trip
 
 
 })
