@@ -3,7 +3,7 @@ element.style {}
 .control {
     box-sizing: border-box;
     clear: both;
-    font-size: 1rem;
+    font-size: 2rem;
     position: relative;
     text-align: inherit;
 }
@@ -46,16 +46,6 @@ p {
     font-weight: 600;
     line-height: 1.125;
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
