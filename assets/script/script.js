@@ -106,7 +106,7 @@ var map = new mapboxgl.Map({
     `)
         //first column
 
-    var styledLocation = currentTrip.location.toUpperCase()
+    var styledLocation = currentTrip.location.replace("_", " ");
     var styledStart = moment(currentTrip.startDate, "YYYYMMDD").format("dddd, MMMM Do, YYYY")
     var styledEnd = moment(currentTrip.endDate, "YYYYMMDD").format("dddd, MMMM Do, YYYY")
 
@@ -125,6 +125,7 @@ var map = new mapboxgl.Map({
 
     `)
     if (isTripOld) {
+        
         var date = currentTrip.endDate
             //api call for covid data
         $.ajax({
@@ -138,16 +139,18 @@ var map = new mapboxgl.Map({
             var hospitalizations = response.hospitalizedCurrently;
             var newHosp = response.hospitalizedIncrease;
             var deathIncr = response.deathIncrease;
+            var slashDate = moment(date, "YYYYMMDD").format("MM/DD/YYYY");
             var covidTestDiv = $('<div>');
             covidTestDiv.html(`
+            <p>Data from ${slashDate}</p>
             <p>${cases} total cases</p>
             <p>${increase} new cases</p>
             <p>${hospitalizations} currently hospitalized</p>
             <p>${newHosp} new hospitalizations</p>
             <p>${deathIncr} new deaths</p>
             <p>${deaths} people have died to date</p>
-
             `)
+            $('#covid-data').empty();
             $('#covid-data').append(covidTestDiv);
 
             var fiveDayData = $('<div>');
@@ -157,11 +160,13 @@ var map = new mapboxgl.Map({
             for (i = 0; i < 4; i++) {
 
             }
+            storeCurrentTrip();
+            storeHistory();
         }).catch(function() {
             alert("Your ajax call failed.")
         })
     } else if (!isTripOld && hasTripStarted) {
-        var date = moment().format("YYYYMMDD");
+        var date = moment().subtract(1, 'days').format("YYYYMMDD");
         //api call for covid data
         $.ajax({
             url: `https://api.covidtracking.com/v1/states/${stateDatabank[currentTrip.location].abbr}/${date}.json`,
@@ -169,12 +174,27 @@ var map = new mapboxgl.Map({
         }).then(function(response) {
             console.log(response);
             var deaths = response.death;
+            var cases = response.positive;
+            var increase = response.positiveIncrease;
+            var hospitalizations = response.hospitalizedCurrently;
+            var newHosp = response.hospitalizedIncrease;
+            var deathIncr = response.deathIncrease;
+            var slashDate = moment(date, "YYYYMMDD").format("MM/DD/YYYY");
             var covidTestDiv = $('<div>');
             covidTestDiv.html(`
-            <p>${deaths} deaths were reported.</p>
-
+            <p>Data from ${slashDate}</p>
+            <p>${cases} total cases</p>
+            <p>${increase} new cases</p>
+            <p>${hospitalizations} currently hospitalized</p>
+            <p>${newHosp} new hospitalizations</p>
+            <p>${deathIncr} new deaths</p>
+            <p>${deaths} people have died to date</p>
             `)
+            $('#covid-data').empty();
             $('#covid-data').append(covidTestDiv);
+
+            storeCurrentTrip();
+            storeHistory();
         }).catch(function() {
             alert("Your ajax call failed.")
         })
@@ -187,12 +207,26 @@ var map = new mapboxgl.Map({
         }).then(function(response) {
             console.log(response);
             var deaths = response.death;
+            var cases = response.positive;
+            var increase = response.positiveIncrease;
+            var hospitalizations = response.hospitalizedCurrently;
+            var newHosp = response.hospitalizedIncrease;
+            var deathIncr = response.deathIncrease;
+            var slashDate = moment(date, "YYYYMMDD").format("MM/DD/YYYY");
             var covidTestDiv = $('<div>');
             covidTestDiv.html(`
-            <p>${deaths} deaths were reported.</p>
-
+            <p>Data from ${slashDate}</p>
+            <p>${cases} total cases</p>
+            <p>${increase} new cases</p>
+            <p>${hospitalizations} currently hospitalized</p>
+            <p>${newHosp} new hospitalizations</p>
+            <p>${deathIncr} new deaths</p>
+            <p>${deaths} people have died to date</p>
             `)
+            $('#covid-data').empty();
             $('#covid-data').append(covidTestDiv);
+            storeCurrentTrip();
+            storeHistory();
         }).catch(function() {
             alert("Your ajax call failed.")
         })
@@ -200,16 +234,79 @@ var map = new mapboxgl.Map({
 };
 
 var renderButtons = function() {
+    $('#historyBox').empty();
+    console.log(searchHistory.length);
     for (i = 0; i < searchHistory.length; i++) {
         var newButton = $('<div>')
+        var formattedLocation = searchHistory[i].location.replace('_', ' ');
         newButton.html(`
-        <button class="button is-fullwidth" id="historyButton${i}">${searchHistory[i].location}</button>`)
+        <button class="button is-fullwidth" id="hBtn${i}">${formattedLocation}</button>`)
         $('#historyBox').append(newButton);
+        console.log(searchHistory[i].location);
     }
 }
 
-
 $(document).ready(function() {
+    //autocomplete widget because case sensitivity is a pain
+    $(function () {
+        var stateNames = [
+            'Alabama',
+            'Alaska',
+            'Arizona',
+            'Arkansas',
+            'California',
+            'Colorado',
+            'Connecticut',
+            'Delaware',
+            'Florida',
+            'Georgia',
+            'Hawaii',
+            'Idaho',
+            'Illinois',
+            'Indiana',
+            'Iowa',
+            'Kansas',
+            'Kentucky',
+            'Louisiana',
+            'Maine',
+            'Maryland',
+            'Massachusetts',
+            'Michigan',
+            'Minnesota',
+            'Mississippi',
+            'Missouri',
+            'Montana',
+            'Nebraska',
+            'Nevada',
+            'New Hampshire',
+            'New Jersey',
+            'New Mexico',
+            'New York',
+            'North Carolina',
+            'North Dakota',
+            'Ohio',
+            'Oklahoma',
+            'Oregon',
+            'Pennsylvania',
+            'Rhode Island',
+            'South Carolina',
+            'South Dakota',
+            'Tennessee',
+            'Texas',
+            'Utah',
+            'Vermont',
+            'Virginia',
+            'Washington',
+            'West Virginia',
+            'Wisconsin',
+            'Wyoming',
+            'DC',
+        ];
+        $('#stateSearch').autocomplete({
+          source: stateNames,
+        });
+      });
+      
     //datepicker
     $(function() {
         $(".datepicker").datepicker();
@@ -234,28 +331,45 @@ $(document).ready(function() {
     }
 
     $('#searchForm').submit(function(event) {
-            event.preventDefault();
-            //swap any spaces " " with underscore in state names
-            //format start and end dates from MM/DD/YYYY to YYYYMMDD
-            var startDateInput = $('#startDateInput').val();
-            var endDateInput = $('#endDateInput').val();
-            var stateInput = $('#stateSearch').val().replace(' ', '_');
-            var formattedStart = moment(startDateInput, "MM/DD/YYYY").format("YYYYMMDD");
-            var formattedEnd = moment(endDateInput, "MM/DD/YYYY").format("YYYYMMDD");
+        event.preventDefault();
+        //swap any spaces " " with underscore in state names
+        //format start and end dates from MM/DD/YYYY to YYYYMMDD
+        var startDateInput = $('#startDateInput').val();
+        var endDateInput = $('#endDateInput').val();
+        var stateInput = $('#stateSearch').val().replace(' ', '_');
+        var formattedStart = moment(startDateInput, "MM/DD/YYYY").format("YYYYMMDD");
+        var formattedEnd = moment(endDateInput, "MM/DD/YYYY").format("YYYYMMDD");
 
-            currentTrip = {location: stateInput, startDate: formattedStart, endDate: formattedEnd};
-            if (searchHistory) {
-                searchHistory.push(currentTrip);
-            } else {
-                searchHistory = [currentTrip];
-            }
-            storeCurrentTrip();
-            storeHistory();
-            console.log(currentTrip);
-            console.log(searchHistory);
-            renderTrip();
-            renderButtons();
-        })
+        currentTrip = {location: stateInput, startDate: formattedStart, endDate: formattedEnd};
+        if (searchHistory) {
+            searchHistory.push(currentTrip);
+        } else {
+            searchHistory = [currentTrip];
+        }
+        // storeCurrentTrip();
+        // storeHistory();
+        console.log(currentTrip);
+        console.log(searchHistory);
+        renderTrip(currentTrip);
+        renderButtons();
+        $('#startDateInput').val("");
+        $('#endDateInput').val("");
+        $('#stateSearch').val("");
+    });
+
+    $('#historyBox').on('click', function(event){
+        event.preventDefault();
+        console.log(event.target.getAttribute('id'));
+        var fullBtnId = event.target.getAttribute('id');
+        var numFromId = parseInt(fullBtnId.slice(4));
+        console.log(numFromId);
+        currentTrip = searchHistory[numFromId];
+        storeCurrentTrip();
+        console.log(currentTrip);
+        console.log(searchHistory);
+        renderTrip(currentTrip);
+        renderButtons();
+    });
         // stringify and parse current trip input
     
     //store to currentTrip
