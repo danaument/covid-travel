@@ -1,21 +1,7 @@
-element.style {}
-
-.control {
-    box-sizing: border-box;
-    clear: both;
-    font-size: 2rem;
-    position: relative;
-    text-align: inherit;
+element.style {
 }
 
 
-p {
-    display: block;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px
-}
 
 .button.is-success {
     background-color: #0bf95e;
@@ -46,8 +32,6 @@ p {
     font-weight: 600;
     line-height: 1.125;
 }
-
-
 
 
 *, ::after, ::before {
@@ -110,7 +94,7 @@ html {
     text-size-adjust: 100%;
 }
 html {
-    background-color: rgb(243, 9, 9);
+    background-color: rgb(39, 24, 245);
     font-size: 16px;
     -webkit-font-smoothing: antialiased;
     min-width: 300px;

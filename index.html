@@ -5,32 +5,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
     <link rel="stylesheet" href="./assets/style/style.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
     <title>COVID Travel</title>
-    
+
 </head>
 
 <body>
     <!-- This is the Header section -->
     <div class="container is-fluid" id="header">
         <div class="notificagtion is-primary">
-            This container is <strong>fluid</strong>: it will have a 32px gap on either side, on any viewport size.
+            <h1>
+                Covid Data Trip Planner
+            </h1>
         </div>
     </div>
     <!-- Form for location search -->
     <form action="submit" class="box" id="searchForm">
         <div class="field ">
-          <p class="control has-icons-left">
+            <p class="control has-icons-left">
                 <input class="input" type="text" placeholder="State" id="stateSearch">
                 <span class="icon is-small is-left">
                 <i class="fas fa-lock"></i>
             </span>
             </p>
-
-            <div class="field">
+            <div class="columns is-vcentered">
+            <div class="field column">
                 <label class="label">Start</label>
                 <div class="control">
                     <p>Date: <input type="text" class="datepicker" id="startDateInput"></p>
@@ -38,59 +41,58 @@
                 </div>
             </div>
 
-            <div class="field">
+            <div class="field column">
                 <label class="label">End</label>
                 <div class="control">
                     <p>Date: <input type="text" class="datepicker" id="endDateInput"></p>
 
                 </div>
             </div>
-            <div class="field">
+            <div class="field column">
                 <p class="control">
                     <button class="button is-success" id="submit">
                      Submit
                     </button>
                 </p>
             </div>
+        </div>
     </form>
     <!-- Recent searches -->
     <div class="columns" id="historyColumn">
         <div class="column is-narrow">
             <div class="box" style="width: 200px;" id="historyBox">
                 <p class="title is-5">Recent Searches</p>
-                <button class="button is-fullwidth" id="historyButton1">Normal</button>
+                <!-- <button class="button is-fullwidth" id="historyButton1">Normal</button>
                 <button class="button is-fullwidth" id="historyButton2">Normal</button>
                 <button class="button is-fullwidth" id="historyButton3">Normal</button>
                 <button class="button is-fullwidth" id="historyButton4">Normal</button>
-                <button class="button is-fullwidth" id="historyButton5">Normal</button>
+                <button class="button is-fullwidth" id="historyButton5">Normal</button> -->
             </div>
         </div>
         <!-- parent column -->
         <div class="column" id="currentColumn">
             <div class="box" id="currentBox">
-                <p class="title is-5">Current Trip</p>
+                <p class="title is-5">Trip View</p>
                 <!-- child column for map and trip info -->
                 <div class="columns">
                     <div class="column" id="selected-trip">
                         First column
                     </div>
                     <!-- map goes here -->
-                      <div class="column" id="map">
+                    <div class="column" id="map">
                         second column
                     </div>
-                    </div>
+                </div>
 
                 <!-- COVID data will go here -->
-                <div id="covid-data">
-                    Covid Data
-                </div>
+                <div id="covid-data"></div>
             </div>
         </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="assets/script/script.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+        <script src="assets/script/script.js"></script>
 
 </body>
 
