@@ -1,7 +1,21 @@
-element.style {
+element.style {}
+
+.control {
+    box-sizing: border-box;
+    clear: both;
+    font-size: 1rem;
+    position: relative;
+    text-align: inherit;
 }
 
 
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px
+}
 
 .button.is-success {
     background-color: #0bf95e;
