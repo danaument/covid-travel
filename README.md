@@ -1,2 +1,0 @@
-# covid-travel
-justin bush
